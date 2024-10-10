@@ -22,11 +22,11 @@ def test_basic_priority_queueing():
     ]
 
     ordered_items = [
-        "texto_04.txt",  # 1 linha
-        "texto_01.txt",  # 2 linhas
-        "texto_03.txt",  # 3 linhas
-        "texto_05.txt",  # 6 linhas
-        "texto_02.txt",  # 8 linhas
+        "texto_01.txt",  # 1 linha
+        "texto_03.txt",  # 2 linhas
+        "texto_04.txt",  # 3 linhas
+        "texto_02.txt",  # 6 linhas
+        "texto_05.txt",  # 8 linhas
     ]
 
     for item in items:
@@ -45,11 +45,11 @@ def test_basic_priority_queueing():
     assert len(queue) == 6
     assert queue.search(5)["nome_do_arquivo"] == "texto_06.txt"
 
-    # Remove o elemento com maior prioridade (texto_04.txt)
+    # Remove o elemento com maior prioridade (texto_01.txt)
     removed_element = queue.dequeue()
 
     assert removed_element is not None
-    assert removed_element["nome_do_arquivo"] == "texto_04.txt"
+    assert removed_element["nome_do_arquivo"] == "texto_01.txt"
     assert len(queue) == 5
 
     # Insere um novo arquivo com prioridade alta e verifica sua posição
@@ -58,12 +58,11 @@ def test_basic_priority_queueing():
 
     # Atualizar a ordem esperada após a inserção do novo elemento
     expected_order_after_enqueue = [
-        "texto_01.txt",  # 2 linhas
-        "texto_07.txt",  # 2 linhas
-        "texto_03.txt",  # 3 linhas
-        "texto_05.txt",  # 6 linhas
-        "texto_06.txt",  # 7 linhas
-        "texto_02.txt",  # 8 linhas
+        "texto_03.txt",  # 2 linhas
+        "texto_04.txt",  # 3 linhas
+        "texto_07.txt",  # 6 linhas
+        "texto_02.txt",  # 7 linhas
+        "texto_05.txt",  # 8 linhas
     ]
 
     for i in range(len(expected_order_after_enqueue)):
